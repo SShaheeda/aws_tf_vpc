@@ -22,3 +22,8 @@ variable "nat_gateway_instance_id" {
     type = string
     description = "nat_gateway_instance_id"
 }
+variable "nat_cidr_block" {
+    type = string
+    description = "nat_cidr_block"
+    default = "0.0.0.0/0"
+}
