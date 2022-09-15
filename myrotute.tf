@@ -22,8 +22,8 @@ resource "aws_route_table" "myrtable_privates" {
   vpc_id = aws_vpc.myvpc.id
 
   route {
-    cidr_block = var.nat_cidr_block
-    nat_gateway_id = var.nat_gateway_instance_id
+    cidr_block = [var.nat_cidr_block]
+    network_interface_id = var.nat_gateway_instance_id
   }
 
    tags = {
