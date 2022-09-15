@@ -9,7 +9,7 @@ resource "aws_route_table" "myrtable" {
  
 
   tags = {
-    Name = "myproject"
+    Name = "publicrt table"
   }
 }
 
@@ -17,3 +17,22 @@ resource "aws_route_table_association" "public_rt_association" {
   subnet_id      = aws_subnet.mysubnet_public.id
   route_table_id = aws_route_table.myrtable.id
 }
+
+resource "aws_route_table" "myrtable_privates" {
+  vpc_id = aws_vpc.myvpc.id
+
+  route {
+    cidr_block = var.nat_cidr_block
+    nat_gateway_id = var.nat_gateway_instance_id
+  }
+
+   tags = {
+    Name = "privatert table"
+  }
+}
+
+resource "aws_route_table_association" "private_rt_association" {
+  subnet_id      = aws_subnet.mysubnet_private.id
+  route_table_id = aws_route_table.myrtable_privates.id
+}
+

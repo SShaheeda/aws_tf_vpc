@@ -17,3 +17,8 @@ variable "private_subnet_cidr" {
     description = "cidr range of private subnet"
     default = ""
 }
+
+variable "nat_gateway_instance_id" {
+    type = string
+    description = "nat_gateway_instance_id"
+}

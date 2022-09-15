@@ -7,7 +7,7 @@ output "public_subnet_id" {
 }
 
 output "private_subnet_id" {
-    value = ""
+    value = aws_subnet.mysubnet_private.id
 }
 
 output "internet_gateway_id" {
